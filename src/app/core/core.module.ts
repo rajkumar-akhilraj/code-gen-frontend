@@ -1,6 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 /* custom services*/
 import { AuthService } from './authentication/auth.service';
@@ -9,8 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    HttpClientModule
+    CommonModule
   ],
   declarations: [NotFoundComponent],
   providers: [

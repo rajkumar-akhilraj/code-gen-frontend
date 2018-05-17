@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { AuthService } from '@app/core';
 import { ProjectListComponent } from './project-list.component';
 
 describe('ProjectListComponent', () => {
@@ -8,7 +10,11 @@ describe('ProjectListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectListComponent ]
+      imports: [ RouterTestingModule.withRoutes([]) ],
+      declarations: [ ProjectListComponent ],
+      providers: [
+        {provide: AuthService, useClass: AuthService}
+      ]
     })
     .compileComponents();
   }));

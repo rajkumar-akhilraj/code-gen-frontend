@@ -6,22 +6,17 @@ import { IAppConfig, AppConfig, APP_CONFIG } from '@app/config';
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  public appConfig: IAppConfig;
-
   constructor(
-    @Inject(APP_CONFIG) appConfig: IAppConfig,
     private authService: AuthService,
     private router: Router) {
-      this.appConfig = appConfig;
     }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const isActive = true;
     if (this.authService.isLoggedIn) {
       return true;
     } else {
       this.authService.redirectUrl = state.url;
-      this.router.navigate([this.appConfig.routes.auth]);
+      this.router.navigate([AppConfig.routes.auth]);
       return false;
     }
   }

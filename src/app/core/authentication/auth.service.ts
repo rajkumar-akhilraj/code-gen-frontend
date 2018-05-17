@@ -7,13 +7,9 @@ import { IAppConfig, AppConfig, APP_CONFIG } from '@app/config';
 export class AuthService {
   public isLoggedIn: boolean;
   public redirectUrl: string;
-  public appConfig: IAppConfig;
 
   constructor(
-    @Inject(APP_CONFIG) appConfig: IAppConfig,
-    private http: HttpClient,
     private router: Router) {
-    this.appConfig = appConfig;
   }
 
   login() {
@@ -22,12 +18,12 @@ export class AuthService {
         this.router.navigate([this.redirectUrl]);
         this.redirectUrl = null;
     } else {
-      this.router.navigate(['/' + this.appConfig.routes.project]);
+      this.router.navigate(['/' + AppConfig.routes.project]);
     }
   }
 
   logout() {
     this.isLoggedIn = false;
-    this.router.navigate(['/' + this.appConfig.routes.auth]);
+    this.router.navigate(['/' + AppConfig.routes.auth]);
   }
 }
